@@ -1,0 +1,54 @@
+/*
+
+用于修改mini-ui组件的默认样式
+
+*/
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+.city-input{
+  display: block;
+  background: #f2f2f2;
+  color: #999;
+  min-height: 0.36rem;
+}
+.city-input input {
+  background: #f2f2f2;
+  height: 0.18rem;
+  padding: 0.09rem 0.18rem 0.09rem 0.15rem;
+  box-sizing: border-box;
+}
+
+.mint-cell-wrapper {
+  width: 3.2rem;
+}
+.mint-indexsection {
+  list-style: none;
+}
+.mint-indexsection-index{
+  font-size: 0.16rem;
+  background: #f5f5f5;
+}
+.mint-indexlist-navlist {
+  margin-top: -0.4rem;
+}
+.mint-swipe-indicators {
+  margin-bottom: -24px;
+}
+.mint-swipe-indicator.is-active {
+  background: #2196f3;
+}
+.search-icon {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-left: 0;
+}
+.mint-spinner-snake {
+  width: 0.2rem;
+  height: 0.2rem;
+}
