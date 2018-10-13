@@ -1,4 +1,4 @@
-# take-out-food
+# vue版饿了么外卖平台
 
 ## Project setup
 ```
