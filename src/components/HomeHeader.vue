@@ -17,6 +17,7 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
+
   </div>
 </template>
 
@@ -39,21 +40,22 @@ export default {
       type:String
     }
   },
-  mounted(){
-    // console.log(this.$route.name)
-    if(this.$route.name==='SelectCity'){
-      this.routeLink='/';
-    }else{
-      this.routeLink='/SelectCity';
-    }
+  created(){
     if(window.localStorage.getItem('store')!==null){
       this.addressText=JSON.parse(window.localStorage.getItem('store')).name;
       this.address=JSON.parse(window.localStorage.getItem('store'));
     }else{
-      this.$router.push({path:'/SelectCity'})
+      this.$router.push({path:'/SelectCity'})    //当本地存储不存在城市数据的话(即未选择收货地址)则跳到收货地址页面去选择地点
     }
   },
-  
+  mounted(){
+    // console.log(this.$route.name)
+    if(this.$route.name==='SelectCity'||this.$route.name==='ClassifyDetail'){   //通过判断当前路由的name来设置头部返回按钮的地址
+      this.routeLink='/';
+    }else{
+      this.routeLink='/SelectCity';
+    }
+  },
   methods:{
     toSelectCity(){
       this.$router.push({path:'/SelectCity'})

@@ -7,6 +7,7 @@ const urlConfig = {
   searchAddress:Url+'/v1/pois?',
   foodClassify:Url+'/v2/index_entry',
   shoppingList:Url+'/shopping/restaurants?',
-  search:Url+'/v4/restaurants?'
+  search:Url+'/v4/restaurants?',
+  allCategory:Url+'/shopping/v2/restaurant/category'
 }
 export default urlConfig;

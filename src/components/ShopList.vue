@@ -1,6 +1,6 @@
 <template>
   <div class="shop-list">
-    <div class="shopList-title">
+    <div class="shopList-title" v-if="$route.path=='/'">
       推荐商家
     </div>
     <ul class="shopList" v-infinite-scroll="loadMore"  infinite-scroll-disabled="loading" infinite-scroll-distance="10">
@@ -119,9 +119,9 @@ export default {
 
 
 <style scoped>
-  .shop-list {
+  /* .shop-list { */
     /* padding-bottom: 0.6rem; */
-  }
+  /* } */
   .shopList-title {
     display: flex;
     box-pack: center;

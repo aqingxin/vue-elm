@@ -4,10 +4,10 @@
       <keep-alive>
         <router-view class="router-view" v-if="$route.meta.keepAlive" />
       </keep-alive>
-    </transition>
-    <transition :name="transitionName"> -->
+    </transition> -->
+    <transition :name="transitionName">
       <router-view class="router-view" />
-    <!-- </transition> -->
+    </transition>
     <!-- <TabBar class="tabbar"/> -->
   </div>
 </template>
@@ -19,7 +19,22 @@ export default {
   // components:{
   //   TabBar
   // },
-  
+  data(){
+    return{
+      transitionName:''
+    }
+  },
+  watch:{
+   $route(to,from){
+     if(to.meta.index>from.meta.index){
+       this.transitionName='slide-left';
+     }else if(to.meta.index===from.meta.index){
+       this.transitionName='';
+     }else{
+       this.transitionName='slide-right';
+     }
+   }
+  }
 }
 </script>
 

@@ -14,7 +14,7 @@
     <div class="swiper">
       <mt-swipe :auto="0">
         <mt-swipe-item v-for="(value,itemIndex) in foodClassifyList" :key="itemIndex">
-          <router-link to='/' v-for="(item,index) in value" :key="index">
+          <router-link :to="{path:'/ClassifyDetail',query:{title:item.title}}" v-for="(item,index) in value" :key="index">
             <div class="container">
               <img :src="imgUrl+item.image_url" alt="foodClaasify_img">
             </div>
@@ -42,20 +42,20 @@ export default {
   },
   data(){
     return {
-      foodClassifyList:[],
+      foodClassifyList:[],    //食物分类数据 
       imgUrl:'https://fuss10.elemecdn.com',
-      shopList:[],
-      location:'',
-      offsetNum:0,
-      loadMoreShow:false
+      shopList:[],    //推荐商家列表数据
+      location:'',    //从本地存储获取定位城市的数据
+      offsetNum:0,    //加载更多时需要跳过多少条数据
+      loadMoreShow:false    //加载更多时加载状态组件的显示
     }
   },
-  mounted(){
+  // mounted(){
+  // },
+  created(){
     if(window.localStorage.getItem('store')!==null){
       this.location=JSON.parse(window.localStorage.getItem('store'))
     }
-  },
-  created(){
     this.getFoodClassify();
     this.getShopList();
   },
@@ -65,7 +65,7 @@ export default {
         let resLength=res.data.length;
         let resArr=[...res.data];
         let foodArr=[];
-        for(let i=0,j=0;i<resLength; i+=10,j++){
+        for(let i=0,j=0;i<resLength; i+=10,j++){    //将数组数据分组
           foodArr[j]=resArr.splice(0,10);
         }
         this.foodClassifyList=foodArr;
@@ -73,7 +73,6 @@ export default {
     },
     getShopList(){
       this.$http.get(api.shoppingList+`latitude=${this.location.latitude}&longitude=${this.location.longitude}&offset=${this.offsetNum}`).then(res=>{   //获取首页的推荐商家  本应是根据定位获取，但是该API只是模拟数据，所以无论是定位到哪里，都是这些商家
-        // console.log(res.data)
         
         this.shopList=this.shopList.concat(res.data);
         for(let i=0;i<this.shopList.length;i++){
@@ -84,7 +83,7 @@ export default {
         this.loadMoreShow=false;
       })
     },
-    loadMore(data){
+    loadMore(data){    //触底加载更多数据   //事件是从ShopList组件传过来的
       // console.log(data);
       this.loadMoreShow=true;
       this.offsetNum+=20;

@@ -52,3 +52,6 @@
   width: 0.2rem;
   height: 0.2rem;
 }
+.mint-header.is-fixed {
+  z-index: 6;
+}

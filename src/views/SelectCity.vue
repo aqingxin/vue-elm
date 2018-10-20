@@ -67,7 +67,6 @@ export default {
   },
   created(){
      Bus.$on('selectSuccess',data=>{   //接收页面传递过来的参数
-     
       this.currentCity=data.name
       this.cityId=data.id
     })
@@ -92,7 +91,6 @@ export default {
   beforeRouteLeave(to,from,next){
     if(to.path==='/AllCity'){
       to.meta.keepAlive=true;
-      // console.log('eee')
     }else{
       to.meta.keepAlive=false;
     }
